@@ -1,0 +1,23 @@
+[package]
+name = "bumpalo-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+allocator-api2 = "0.2"
+arbitrary = { version = "1.4.1", features = ["derive"] }
+bumpalo = { path = "..", features = ["allocator-api2"] }
+libfuzzer-sys = "0.4"
+log = "0.4.27"
+rangemap = "1.5.1"
+
+[[bin]]
+name = "allocator_api"
+path = "fuzz_targets/allocator_api.rs"
+test = false
+doc = false
+bench = false
