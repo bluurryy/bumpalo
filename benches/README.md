@@ -96,22 +96,22 @@ allocation is generally the very most important.
 
 |                                                     | `bumpalo::Bump`          | `blink_alloc::BlinkAlloc`          | `std::alloc::System`               |
 |:----------------------------------------------------|:-------------------------|:-----------------------------------|:---------------------------------- |
-| **`allocate(u8) x 10007`**                          | `16.65 us` (✅ **1.00x**) | `20.13 us` (❌ *1.21x slower*)      | `475.36 us` (❌ *28.55x slower*)    |
-| **`allocate(u32) x 10007`**                         | `16.41 us` (✅ **1.00x**) | `19.58 us` (❌ *1.19x slower*)      | `525.99 us` (❌ *32.06x slower*)    |
-| **`allocate(u64) x 10007`**                         | `16.69 us` (✅ **1.00x**) | `16.51 us` (✅ **1.01x faster**)    | `564.42 us` (❌ *33.82x slower*)    |
-| **`allocate(u128) x 10007`**                        | `15.97 us` (✅ **1.00x**) | `16.41 us` (✅ **1.03x slower**)    | `618.64 us` (❌ *38.73x slower*)    |
-| **`allocate([u8; 0]) x 10007`**                     | `22.04 us` (✅ **1.00x**) | `17.40 us` (✅ **1.27x faster**)    | `197.37 us` (❌ *8.96x slower*)     |
-| **`allocate([u8; 1]) x 10007`**                     | `22.03 us` (✅ **1.00x**) | `17.24 us` (✅ **1.28x faster**)    | `484.81 us` (❌ *22.01x slower*)    |
-| **`allocate([u8; 7]) x 10007`**                     | `22.09 us` (✅ **1.00x**) | `17.41 us` (✅ **1.27x faster**)    | `567.44 us` (❌ *25.68x slower*)    |
-| **`allocate([u8; 8]) x 10007`**                     | `22.09 us` (✅ **1.00x**) | `17.41 us` (✅ **1.27x faster**)    | `561.20 us` (❌ *25.41x slower*)    |
-| **`allocate([u8; 31]) x 10007`**                    | `22.09 us` (✅ **1.00x**) | `17.34 us` (✅ **1.27x faster**)    | `675.39 us` (❌ *30.57x slower*)    |
-| **`allocate([u8; 32]) x 10007`**                    | `21.99 us` (✅ **1.00x**) | `17.57 us` (✅ **1.25x faster**)    | `690.94 us` (❌ *31.42x slower*)    |
-| **`grow same align (u32 -> [u32; 2]) x 10007`**     | `29.65 us` (✅ **1.00x**) | `31.03 us` (✅ **1.05x slower**)    | `1.15 ms` (❌ *38.75x slower*)      |
-| **`grow smaller align (u32 -> [u16; 4]) x 10007`**  | `30.12 us` (✅ **1.00x**) | `31.06 us` (✅ **1.03x slower**)    | `1.15 ms` (❌ *38.07x slower*)      |
-| **`grow larger align (u32 -> u64) x 10007`**        | `37.50 us` (✅ **1.00x**) | `39.16 us` (✅ **1.04x slower**)    | `1.15 ms` (❌ *30.79x slower*)      |
-| **`shrink same align ([u32; 2] -> u32) x 10007`**   | `19.66 us` (✅ **1.00x**) | `20.39 us` (✅ **1.04x slower**)    | `1.09 ms` (❌ *55.61x slower*)      |
-| **`shrink smaller align (u32 -> u16) x 10007`**     | `19.97 us` (✅ **1.00x**) | `19.93 us` (✅ **1.00x faster**)    | `1.08 ms` (❌ *54.32x slower*)      |
-| **`shrink larger align ([u16; 4] -> u32) x 10007`** | `19.60 us` (✅ **1.00x**) | `39.14 us` (❌ *2.00x slower*)      | `1.09 ms` (❌ *55.76x slower*)      |
+| **`allocate(u8) x 10007`**                          | `20.53 us` (✅ **1.00x**) | `17.60 us` (✅ **1.17x faster**)    | `497.83 us` (❌ *24.24x slower*)    |
+| **`allocate(u32) x 10007`**                         | `19.15 us` (✅ **1.00x**) | `22.74 us` (❌ *1.19x slower*)      | `554.68 us` (❌ *28.96x slower*)    |
+| **`allocate(u64) x 10007`**                         | `19.14 us` (✅ **1.00x**) | `22.76 us` (❌ *1.19x slower*)      | `594.45 us` (❌ *31.05x slower*)    |
+| **`allocate(u128) x 10007`**                        | `20.29 us` (✅ **1.00x**) | `22.75 us` (❌ *1.12x slower*)      | `644.37 us` (❌ *31.77x slower*)    |
+| **`allocate([u8; 0]) x 10007`**                     | `20.76 us` (✅ **1.00x**) | `20.44 us` (✅ **1.02x faster**)    | `223.66 us` (❌ *10.77x slower*)    |
+| **`allocate([u8; 1]) x 10007`**                     | `20.78 us` (✅ **1.00x**) | `20.36 us` (✅ **1.02x faster**)    | `502.14 us` (❌ *24.17x slower*)    |
+| **`allocate([u8; 7]) x 10007`**                     | `20.73 us` (✅ **1.00x**) | `20.42 us` (✅ **1.02x faster**)    | `594.31 us` (❌ *28.67x slower*)    |
+| **`allocate([u8; 8]) x 10007`**                     | `20.76 us` (✅ **1.00x**) | `20.47 us` (✅ **1.01x faster**)    | `597.39 us` (❌ *28.78x slower*)    |
+| **`allocate([u8; 31]) x 10007`**                    | `20.89 us` (✅ **1.00x**) | `20.40 us` (✅ **1.02x faster**)    | `698.01 us` (❌ *33.42x slower*)    |
+| **`allocate([u8; 32]) x 10007`**                    | `20.80 us` (✅ **1.00x**) | `24.85 us` (❌ *1.20x slower*)      | `705.25 us` (❌ *33.91x slower*)    |
+| **`grow same align (u32 -> [u32; 2]) x 10007`**     | `48.48 us` (✅ **1.00x**) | `37.83 us` (✅ **1.28x faster**)    | `1.20 ms` (❌ *24.74x slower*)      |
+| **`grow smaller align (u32 -> [u16; 4]) x 10007`**  | `48.56 us` (✅ **1.00x**) | `37.95 us` (✅ **1.28x faster**)    | `1.24 ms` (❌ *25.46x slower*)      |
+| **`grow larger align (u32 -> u64) x 10007`**        | `39.57 us` (✅ **1.00x**) | `50.92 us` (❌ *1.29x slower*)      | `1.24 ms` (❌ *31.30x slower*)      |
+| **`shrink same align ([u32; 2] -> u32) x 10007`**   | `20.13 us` (✅ **1.00x**) | `26.29 us` (❌ *1.31x slower*)      | `1.13 ms` (❌ *56.15x slower*)      |
+| **`shrink smaller align (u32 -> u16) x 10007`**     | `20.11 us` (✅ **1.00x**) | `26.22 us` (❌ *1.30x slower*)      | `1.15 ms` (❌ *57.10x slower*)      |
+| **`shrink larger align ([u16; 4] -> u32) x 10007`** | `20.77 us` (✅ **1.00x**) | `48.76 us` (❌ *2.35x slower*)      | `1.20 ms` (❌ *57.71x slower*)      |
 
 ### warm-up
 
@@ -124,7 +124,7 @@ to bump allocate out of.
 
 |                            | `bumpalo::Bump`          | `blink_alloc::BlinkAlloc`          | `std::alloc::System`             |
 |:---------------------------|:-------------------------|:-----------------------------------|:-------------------------------- |
-| **`first u32 allocation`** | `24.16 ns` (✅ **1.00x**) | `21.65 ns` (✅ **1.12x faster**)    | `74.88 ns` (❌ *3.10x slower*)    |
+| **`first u32 allocation`** | `26.28 ns` (✅ **1.00x**) | `19.53 ns` (✅ **1.35x faster**)    | `70.27 ns` (❌ *2.67x slower*)    |
 
 ### reset
 
@@ -136,9 +136,9 @@ less important, but it is important to keep an eye on generally since
 deallocation-en-masse and reusing already-allocated chunks can be selling points
 for bump allocation over using a generic allocator in certain scenarios.
 
-|                                         | `bumpalo::Bump`           | `blink_alloc::BlinkAlloc`          | `std::alloc::System`                |
-|:----------------------------------------|:--------------------------|:-----------------------------------|:----------------------------------- |
-| **`reset after allocate(u32) x 10007`** | `163.62 ns` (✅ **1.00x**) | `192.34 ns` (❌ *1.18x slower*)     | `127.35 us` (❌ *778.30x slower*)    |
+|                                         | `bumpalo::Bump`           | `blink_alloc::BlinkAlloc`          | `std::alloc::System`                 |
+|:----------------------------------------|:--------------------------|:-----------------------------------|:------------------------------------ |
+| **`reset after allocate(u32) x 10007`** | `108.84 ns` (✅ **1.00x**) | `116.31 ns` (✅ **1.07x slower**)   | `133.64 us` (❌ *1227.86x slower*)    |
 
 ### vec
 
@@ -153,8 +153,8 @@ the `Allocator` trait is stabilized).
 
 |                                | `bumpalo::Bump`          | `blink_alloc::BlinkAlloc`          | `std::alloc::System`              |
 |:-------------------------------|:-------------------------|:-----------------------------------|:--------------------------------- |
-| **`push(usize) x 10007`**      | `16.66 us` (✅ **1.00x**) | `15.21 us` (✅ **1.10x faster**)    | `42.36 us` (❌ *2.54x slower*)     |
-| **`reserve_exact(1) x 10007`** | `2.26 ms` (✅ **1.00x**)  | `60.24 us` (🚀 **37.44x faster**)   | `683.34 us` (🚀 **3.30x faster**)  |
+| **`push(usize) x 10007`**      | `13.83 us` (✅ **1.00x**) | `10.56 us` (✅ **1.31x faster**)    | `45.94 us` (❌ *3.32x slower*)     |
+| **`reserve_exact(1) x 10007`** | `3.39 ms` (✅ **1.00x**)  | `42.55 us` (🚀 **79.61x faster**)   | `712.04 us` (🚀 **4.76x faster**)  |
 
 ---
 Made with [criterion-table](https://github.com/nu11ptr/criterion-table)
